@@ -1,28 +1,27 @@
 import psutil
-import GPUtil
+import os
+import time
+
+def clear_console():
+    os.system('cls' if os.name == 'nt' else 'clear')
 
 def afficher_infos_systeme():
-    # Informations sur le CPU
-    cpu_info = f"CPU: {psutil.cpu_percent()}% utilisé"
-    
-    # Informations sur la RAM
+    cpu = psutil.cpu_percent(interval=1)
     ram = psutil.virtual_memory()
-    ram_info = f"RAM: {ram.percent}% utilisé"
-    
-    # Informations sur le disque
     disque = psutil.disk_usage('/')
-    disque_info = f"Disque: {disque.percent}% utilisé"
     
-    # Informations sur le GPU
-    gpus = GPUtil.getGPUs()
-    for gpu in gpus:
-        gpu_info = f"GPU {gpu.id}: {gpu.name}, Mémoire Utilisée: {gpu.memoryUsed} MB, Charge: {gpu.load * 100}%"
-        print(gpu_info)
-    
-    # Affichage des informations
-    print(cpu_info)
-    print(ram_info)
-    print(disque_info)
+    print("---- Infos système ----")
+    print(f"CPU utilisé : {cpu}%")
+    print(f"RAM utilisée : {ram.percent}%")
+    print(f"Disque utilisé : {disque.percent}%")
+    print("GPU: Pas d'affichage GPU pour le moment (à ajouter)")
 
-# Appel de la fonction pour afficher les informations
-afficher_infos_systeme()
+if __name__ == "__main__":
+    try:
+        while True:
+            clear_console()
+            afficher_infos_systeme()
+            print("\nAppuie sur Ctrl+C pour quitter.")
+            time.sleep(2)
+    except KeyboardInterrupt:
+        print("\nBye !")
