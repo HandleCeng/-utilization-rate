@@ -1,20 +1,26 @@
-# -Requirements
-- Python 3.x
-- psutil (pip install psutil)
 
-# -Installation
-Clone the repository.
-Install dependencies: pip install psutil
+## Features
 
-# -Usage
-Run the script: python CPU-Pulse.py
+- Real-time monitoring of:
+  - **CPU usage** (percentage)
+  - **RAM usage** (percentage and detailed stats)
+  - **Disk usage** (percentage and detailed stats)
+- Human-readable memory and storage units
+- Script uptime tracking
+- Cross-platform console clearing (Windows / Linux / macOS)
+- Colored output with [colorama] (if installed)
+- Modular and extensible design for future improvements (e.g. GPU monitoring)
 
+---
 
-# -Future Improvements
+## Requirements
 
-### Add GPU monitoring.
-### Support per-core CPU stats.
-### Customizable refresh intervals.
+- Python **3.8+**
+- [psutil](https://pypi.org/project/psutil/)  
+- [colorama](https://pypi.org/project/colorama/) *(optional, for colored output)*
 
-# - License
-### CC BY-NC License
+Install dependencies:
+
+```bash
+pip install psutil colorama
+--
